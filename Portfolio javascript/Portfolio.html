@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/c46a66447e.js" crossorigin="anonymous"></script>
+    <title>Portfolio</title>
+</head>
+<body>
+
+<header>
+    <h1><a href="Portfolio.html" class="button">Home</a></h1>
+    <nav class="about_me">
+        <ul>
+            <li><button id="theme-toggle" class="button">Light Mode</button></li>
+            <li><a href="Skills.html" class="button">Mijn skills</a></li>
+            <li><a href="Projecten.html" class="button">Projecten</a></li>
+            <li><a href="Contact.html" class="button">Contact</a></li>
+            <li><a href="Interview.html" class="button">Interview</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="voorpagina_flex">
+        <img class="Image_home" src="Media/ictcartoon2.png" alt="Cartoon illustration of ICT theme"/>
+        <div class="information">
+            <p>Welkom bij mijn portfolio, Mijn naam is Sami Ainashe. Neem een kijkje naar mijn werk en ontdek wat ik voor jou kan betekenen!</p>
+            <a href="Skills.html" class="interview">Mijn skills</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <section class="footer_information">
+        <h4>Contact & Sociale Media</h4>
+        <p>Telefoon: +31 6 22662513</p>
+        <p>E-mail: 9025776@student.zadkine.nl</p>
+    </section>
+    <div class="footer_social">
+        <a href="https://github.com/Samigithub123" target="_blank" aria-label="GitHub Profile">
+            <i class="fa-brands fa-square-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sami-ainashe-ba679b329/" target="_blank" aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/sami_manutd/" target="_blank" aria-label="Instagram Profile">
+            <i class="fa-brands fa-square-instagram"></i>
+        </a>
+    </div>
+</footer>
+<div id="cookie-banner" class="cookie-banner">
+    <p>Deze website maakt gebruik van cookies om uw ervaring te verbeteren.</p>
+    <button id="accept-cookies" class="button">Accepteren</button>
+</div>
+<script>
+    // Thema wisselen
+    const themeToggle = document.getElementById('theme-toggle');
+    const main = document.querySelector("main");
+
+    // Controleer of een thema is opgeslagen in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        main.classList.add(savedTheme);
+        console.log(`Thema hersteld: ${savedTheme}`);
+        if (savedTheme === 'light-mode') {
+            themeToggle.textContent = 'Dark Mode';
+        }
+    }
+
+    // Event listener voor de knop
+    themeToggle.addEventListener('click', () => {
+        main.classList.toggle('light-mode');
+        const isLightMode = main.classList.contains('light-mode');
+
+        // Knoptekst aanpassen
+        themeToggle.textContent = isLightMode ? 'Dark Mode' : 'Light Mode';
+
+        // Thema opslaan in localStorage
+        localStorage.setItem('theme', isLightMode ? 'light-mode' : '');
+        console.log(`Thema gewijzigd naar: ${isLightMode ? 'light-mode' : 'dark-mode'}`);
+    });
+
+    // Cookie-melding functionaliteit
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookies = document.getElementById('accept-cookies');
+
+    // Controleer of cookies al zijn geaccepteerd
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    if (cookiesAccepted) {
+        cookieBanner.classList.add('hidden');
+        console.log('Cookies waren al geaccepteerd. Cookie-melding verborgen.');
+    }
+
+    // Event listener voor de accept-knop
+    acceptCookies.addEventListener('click', () => {
+        cookieBanner.classList.add('hidden');
+        localStorage.setItem('cookiesAccepted', 'true');
+        console.log('Cookies geaccepteerd. Cookie-melding verborgen.');
+    });
+
+
+
+
+</script>
+</body>
+</html>
