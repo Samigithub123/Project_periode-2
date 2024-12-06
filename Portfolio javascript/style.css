@@ -319,3 +319,52 @@ footer.light-mode {
     display: none;
 }
 
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+
+#menu-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+#menu-toggle:hover {
+    color: #6b6b6b;
+}
+
+.menu-items {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #333333;
+    border: 1px solid #484848;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-items.hidden {
+    display: none;
+}
+
+.menu-items li {
+    padding: 10px 20px;
+}
+
+.menu-items li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.menu-items li a:hover {
+    color: #6b6b6b;
+}

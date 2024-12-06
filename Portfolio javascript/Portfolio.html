@@ -14,6 +14,17 @@
     <h1><a href="Portfolio.html" class="button">Home</a></h1>
     <nav class="about_me">
         <ul>
+            <li class="hamburger-menu">
+                <button id="menu-toggle" class="button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul id="menu-items" class="menu-items hidden">
+                    <li><a href="Skills.html" class="button">Mijn skills</a></li>
+                    <li><a href="Projecten.html" class="button">Projecten</a></li>
+                    <li><a href="Contact.html" class="button">Contact</a></li>
+                    <li><a href="Interview.html" class="button">Interview</a></li>
+                </ul>
+            </li>
             <li><button id="theme-toggle" class="button">Light Mode</button></li>
             <li><a href="Skills.html" class="button">Mijn skills</a></li>
             <li><a href="Projecten.html" class="button">Projecten</a></li>
@@ -26,7 +37,7 @@
 <main>
     <div class="voorpagina_flex">
         <img class="Image_home" src="Media/ictcartoon2.png" alt="Cartoon illustration of ICT theme"/>
-        <div class="information">
+        <div id="tijdgebonden_begroeting" class="information">
             <p>Welkom bij mijn portfolio, Mijn naam is Sami Ainashe. Neem een kijkje naar mijn werk en ontdek wat ik voor jou kan betekenen!</p>
             <a href="Skills.html" class="interview">Mijn skills</a>
         </div>
@@ -56,6 +67,26 @@
     <button id="accept-cookies" class="button">Accepteren</button>
 </div>
 <script>
+    // tijd gebonden begroeting
+    const tijdgebondenBegroeting = document.getElementById('tijdgebonden_begroeting');
+    const greetingText = tijdgebondenBegroeting.querySelector('p');
+
+    // Huidige tijd ophalen
+    const currentHour = new Date().getHours();
+    let greeting;
+
+    // Tijdstip bepalen
+    if (currentHour < 12) {
+        greeting = "Goedemorgen";
+    } else if (currentHour < 18) {
+        greeting = "Goedemiddag";
+    } else {
+        greeting = "Goedenavond";
+    }
+
+    // Begroeting aanpassen
+    greetingText.textContent = `${greeting}, welkom bij mijn portfolio, Mijn naam is Sami Ainashe. Neem een kijkje naar mijn werk en ontdek wat ik voor jou kan betekenen!`;
+
     // Thema wisselen
     const themeToggle = document.getElementById('theme-toggle');
     const main = document.querySelector("main");
@@ -100,6 +131,14 @@
         localStorage.setItem('cookiesAccepted', 'true');
         console.log('Cookies geaccepteerd. Cookie-melding verborgen.');
     });
+    // hamburger menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuItems = document.getElementById('menu-items');
+
+    menuToggle.addEventListener('click', () => {
+        menuItems.classList.toggle('hidden');
+    });
+
 
 
 
